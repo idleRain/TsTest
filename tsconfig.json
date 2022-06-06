@@ -1,0 +1,40 @@
+// 在 ts 的 json 配置文件中，可以写注释
+{
+  "compilerOptions": {
+    // 指定模块化的规范
+    "module": "commonjs",
+    // 编译后的 js 版本
+    "target": "ES2021",
+    "sourceMap": true,
+    // lib 用来指定项目需要用到哪些库，并根据所用到的库来给出提示
+    // "lib": [],
+    // 用来指定编译后的文件放在哪个文件夹
+    "outDir": "./dist",
+    // 是否对 js 文件进行编译， 默认是 false
+    "allowJs": false,
+    // 检查 js 语法是否符合规范，默认是 false
+    "checkJs": false,
+    // 编译后是否移除注释，默认是 false
+    "removeComments": false,
+    // 不生成编译后的文件
+    "noEmit": false,
+    // 有错误不生成编译后的文件， 默认为 false
+    "noEmitOnError": true,
+    // 所有严格检查的总开关
+    "strict": false,
+    // 不允许隐式的 any 类型
+    "noImplicitAny": false,
+    // 不允许使用不明确类型的 this ，默认为 false
+    "noImplicitThis": true,
+    // 严格的检查空值，默认为 false
+    "strictNullChecks": true
+  },
+  // 只编译包含的文件
+  "include": [
+    "*"
+  ],
+  // 编译排除的文件
+  "exclude": [
+    "node_modules"
+  ]
+}
