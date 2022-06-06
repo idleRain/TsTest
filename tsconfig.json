@@ -2,7 +2,7 @@
 {
   "compilerOptions": {
     // 指定模块化的规范
-    "module": "commonjs",
+    "module": "ES2015",
     // 编译后的 js 版本
     "target": "ES2021",
     "sourceMap": true,
@@ -31,7 +31,8 @@
   },
   // 只编译包含的文件
   "include": [
-    "*"
+    "*",
+    "./src/*"
   ],
   // 编译排除的文件
   "exclude": [

@@ -12,4 +12,6 @@ i = {
 };
 console.log(i.gender === Gender.Female);
 let aa;
+aa = 2;
+// aa = '3'     // 不行
 //# sourceMappingURL=type.js.map
