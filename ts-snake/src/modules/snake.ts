@@ -23,10 +23,10 @@ class Snake {
 
 	// 设置蛇头的坐标
 	set X(value)  {
-		this.head.style.left = value.toString()
+		this.head.style.left = value.toString() + 'px'
 	}
 	set Y(value) {
-		this.head.style.top = value.toString()
+		this.head.style.top = value.toString() + 'px'
 	}
 
 	// 增加蛇身
