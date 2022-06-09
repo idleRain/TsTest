@@ -23,7 +23,7 @@ class GameControl {
 
 	// 游戏初始化，按下按键后游戏开始
 	init() {
-		document.addEventListener('keydown',this.keyDownHandler)
+		document.addEventListener('keydown', this.keyDownHandler)
 		this.run()
 	}
 
@@ -38,6 +38,10 @@ class GameControl {
 		// 获取蛇当前的坐标
 		let X = this.snake.X
 		let Y = this.snake.Y
+
+		// 检查是否迟到
+		this.checkEat(X, Y)
+
 		// 通过方向让蛇移动
 		switch (this.directions) {
 			case 'w':		// 上
@@ -55,11 +59,33 @@ class GameControl {
 		}
 
 		// 修改蛇的坐标
-		this.snake.X = X
-		this.snake.Y = Y
+		try {
+			this.snake.X = X
+			this.snake.Y = Y
+		} catch (e: any) {
+			// 捕获到异常后终止游戏
+			this.isLive = false
+			alert(e.message)
+			// 刷新页面
+			window.location.reload()
+		}
 
 		// 让蛇根据等级持续移动，等级越高速度越快
-		if (this.isLive) setTimeout(this.run.bind(this),300 - (this.scorePanel.level - 1) * 10)
+		if (this.isLive) setTimeout(this.run.bind(this), 300 - (this.scorePanel.level - 1) * 10)
+	}
+
+	// 定义一个检查蛇是否吃到食物的方法
+	checkEat(X: number, Y: number) {
+		if (X === this.food.X && Y === this.food.Y) {
+			// 食物的位置重置
+			this.food.change()
+			// 分数增加
+			this.scorePanel.addScore()
+			// 增加一节蛇的身体
+			this.snake.addBody()
+
+			console.log('吃到了')
+		}
 	}
 }
 
