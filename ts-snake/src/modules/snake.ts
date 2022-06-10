@@ -34,6 +34,9 @@ class Snake {
 		if (value < 0 || value > 290) throw new Error('GAME OVER!')
 
 		this.head.style.left = value.toString() + 'px'
+
+		// 监测是否撞到自己
+		this.checkHeadBody()
 	}
 
 	set Y(value) {
@@ -47,6 +50,9 @@ class Snake {
 		this.moveBody()
 
 		this.head.style.top = value.toString() + 'px'
+
+		// 监测是否撞到自己
+		this.checkHeadBody()
 	}
 
 	// 增加蛇身
@@ -63,6 +69,18 @@ class Snake {
 			// 把值设置到身体上
 			;(this.bodies[i] as HTMLElement).style.left = X + 'px'
 			;(this.bodies[i] as HTMLElement).style.top = Y + 'px'
+		}
+	}
+
+	// 监测蛇头和身体是否相撞
+	checkHeadBody() {
+		// 循环遍历所有的身体，监测其是否与头重合，重合则说明相撞
+		for (let i = 4; i < this.bodies.length; i++) {
+			let bd = this.bodies[i] as HTMLElement
+			if (this.X === bd.offsetLeft && this.Y === bd.offsetTop) {
+				// 结束游戏
+				throw new Error('GAME OVER!')
+			}
 		}
 	}
 }
